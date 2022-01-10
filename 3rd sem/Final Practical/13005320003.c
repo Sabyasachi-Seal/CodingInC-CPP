@@ -14,7 +14,7 @@ void insertfront()  {
         printf("\nOVERFLOW");  
     }  
     else{  
-    printf("\nEnter Element:");  
+    printf("\nEnter Element: ");  
     scanf("%d",&ele);   
     if(head==NULL){  
         newnode->next = NULL;  
@@ -39,7 +39,7 @@ void insertlast(){
         printf("\nOVERFLOW");  
     }  
     else  {  
-        printf("\nEnter value");  
+        printf("\nEnter value: ");  
         scanf("%d",&ele);  
         newnode->data = ele;  
         if(head == NULL)  {  
@@ -61,7 +61,7 @@ void insertlast(){
     }  
 void insertposi() {  
     struct node *newnode,*temp;  
-    int ele,posi,i;  
+    int ele, posi, i;  
     newnode = (struct node *)malloc(sizeof(struct node));  
     if(newnode == NULL)  {  
         printf("\nOVERFLOW");  
@@ -77,7 +77,7 @@ void insertposi() {
                 return;  
             }  
         }  
-        printf("Enter value");  
+        printf("Enter Data: ");  
         scanf("%d",&ele);  
         newnode->data = ele;  
         newnode->next = temp->next;  
@@ -89,7 +89,7 @@ void insertposi() {
 void deletefront(){  
     struct node *newnode;  
     if(head == NULL)  {  
-        printf("\n UNDERFLOW");  
+        printf("\nUnderflow Condition\n");  
     }  
     else if(head->next == NULL)  {  
         head = NULL;   
@@ -105,7 +105,7 @@ void deletefront(){
 void deletelast()  {  
     struct node *newnode;  
     if(head == NULL)  {  
-        printf("\n UNDERFLOW");  
+        printf("\nUnderflow Condition\n");  
     }  
     else if(head->next == NULL)  {  
         head = NULL;   
@@ -130,7 +130,7 @@ void deleteposi()  {
         newnode = newnode -> next;  
     }
     if(newnode -> next == NULL)  {  
-        printf("\nCan't delete\n");  
+        printf("\nNode cannot be deleted.\n");  
     }  
     else if(newnode -> next -> next == NULL)  {  
         newnode ->next = NULL;  
@@ -146,19 +146,20 @@ void traverse(){
     struct node *newnode; 
     newnode = head;  
     while(newnode != NULL){  
-        printf("%d\n",newnode->data);  
+        printf("%d ",newnode->data);  
         newnode=newnode->next;  
-    }  
+    } 
+    printf("\n");
 }   
 void search() {  
     struct node *newnode;  
-    int ele,i=0,flag;  
+    int ele, i=0, flag;  
     newnode = head;   
     if(newnode == NULL)  {  
         printf("\nUnderflow\n");  
     }  
     else  {   
-        printf("\nEnter Search Element: \n");   
+        printf("\nEnter Search Element: ");   
         scanf("%d",&ele);  
         while (newnode!=NULL)  {  
             if(newnode->data == ele)  {  
