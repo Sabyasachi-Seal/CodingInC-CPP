@@ -178,10 +178,10 @@ void search() {
         }  
     }                
 }  
-void main ()  {  
-int ch;  
+void main (){  
+    int ch;  
     while(1)  { 
-        printf("\nInsert\n1.Front\n2.Last\n3.Randomly\n\nDelete\n4.Beginning\n5.Last\n6.Specified\n\n7.Search\n8.Display\n9.Exit\n");  
+        printf("\nInsert\n1.Front\n2.Last\n3.Specified\n\nDelete\n4.Beginning\n5.Last\n6.Specified\n\n7.Search\n8.Display\n9.Exit\n");  
         printf("\nYour Choice: ");  
         scanf("\n%d",&ch);  
         switch(ch){  
