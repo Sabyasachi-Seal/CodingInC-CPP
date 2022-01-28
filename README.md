@@ -1,2 +1,2 @@
 # CodingInC-CPP
-This Is where I keep the C codes that I practice
+This Is where I keep the C and C++ codes that I practice
