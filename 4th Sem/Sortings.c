@@ -2,7 +2,6 @@
 approach. */ 
 
 #include <stdio.h>
-#include <stdbool.h>
 void swap(int *a, int *b){
     int temp = *a;
     *a = *b;
@@ -11,28 +10,6 @@ void swap(int *a, int *b){
 void display(int arr[], int size){
     for(int i=0; i<size; i++){
         printf("%d ", arr[i]);
-    }
-}
-void selection(int arr[], int size){
-    for(int step=0; step<size; step++){
-        int min = step;//only storing index
-        for(int smol=step; smol<size; smol++){
-            if(arr[smol]<arr[step]){
-                min = smol;
-            }
-        }
-        swap(&arr[min], &arr[step]);
-    }
-}
-void insertion(int arr[], int size){
-    for(int currentindex=1; currentindex<size; currentindex++){
-        int current = arr[currentindex];
-        int previousindex = currentindex - 1;
-        while(previousindex>=0 && current<arr[previousindex]){
-            arr[previousindex+1] = arr[previousindex];
-            previousindex = previousindex - 1;
-        }
-        arr[previousindex+1] = current;
     }
 }
 int partition(int arr[], int start, int end){//sub-fuction of quick sort
@@ -130,26 +107,18 @@ int main(){
     display(arr, size);
     int choice;
     printf("\nEnter the choice of sorting: ");
-    printf("\n1. Selection Sort\n2. Insertion Sort\n3. Quick Sort\n4. Merge Sort\n5. Heap Sort\n");
+    printf("\n1. Quick Sort\n2. Merge Sort\n3. Heap Sort\n");
     scanf("%d", &choice);
     switch(choice){
         case 1:
-            selection(arr, size);
-            printf("\nSelection Sorted Array: ");
-            break;
-        case 2:
-            insertion(arr, size);
-            printf("\nInsertion Sorted Array: ");
-            break;
-        case 3:
             quicksort(arr, 0, size-1);
             printf("\nQuick Sorted Array: ");
             break;
-        case 4:
+        case 2:
             mergesort(arr, 0, size-1, size);
             printf("\nMerge Sorted Array: ");
             break;
-        case 5:
+        case 3:
             heapsort(arr, size);
             printf("\nHeap Sorted Array: ");
             break;
