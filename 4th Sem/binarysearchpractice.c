@@ -19,7 +19,7 @@ int binary(int arr[], int start, int end, int x){
 int main(){
     int arr[] = {12, 23, 34, 45, 56, 67, 78, 89, 90, 100};
     int size = sizeof(arr)/sizeof(arr[0]);
-    int search = 344;
+    int search = 34;
     int index = binary(arr, 0, size, search);
     printf("\nIndex = %d\n", index);
 }
