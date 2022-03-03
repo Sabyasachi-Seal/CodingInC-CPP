@@ -33,7 +33,7 @@ void heapify(int arr[], int n, int i) {
 // Main function to do heap sort
 void heapSort(int arr[], int n) {
     // Build max heap
-    for (int i = n / 2 - 1; i >= 0; i--){
+    for (int i = n/2 -1; i >= 0; i--){
         printArray(arr, n);
         heapify(arr, n, i);
     }
