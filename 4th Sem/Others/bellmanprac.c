@@ -1,45 +1,43 @@
 #include <stdio.h>
-#define max 10
+#define max 20
 #define infinite 999
-
-int bellman(int g[max][max], int V, int E, int edges[max][2]){
-    int dist[max], parent[max];
-    int i, j, k, u, v, flag=1;
+int bellmanford(int graph[max][max], int V, int E, int edges[max][2]){
+    int distance[max], parent[max];
+    int i, j, k, u, v, s, flag=1;
 
     for(i=0; i<V; i++){
-        dist[i] = infinite;
+        distance[i] = infinite;
         parent[i] = -1;
     }
 
-    int source;
     printf("Enter the source vertex: ");
-    scanf("%d", &source);
-    dist[source - 1] = 0;
+    scanf("%d", &s);
+    distance[s-1] = 0;
 
     for(i=0; i<V-1; i++){
         for(j=0; j<E; j++){
             u = edges[j][0];
             v = edges[j][1];
-            if(dist[u] + g[u][v] < dist[v]){
-                dist[v] = dist[u] + g[u][v];
+            if(distance[u] + graph[u][v] < distance[v]){
+                distance[v] = distance[u] + graph[u][v];
                 parent[v] = u;
-            }
+            } 
         }
     }
 
     for(j=0; j<E; j++){
-        u=edges[j][0];
-        v=edges[j][1];
-        if(dist[u] + g[u][v] < dist[v]){
+        u = edges[j][0];
+        v = edges[j][0];
+        if(distance[u] + graph[u][v] < distance[v]){
             flag = 0;
         }
     }
 
     if(flag){
-        for(i=0; i<V; i++)
-            printf("\nVertex = %d || Cost = %d || Parent = %d", i+1, dist[i], parent[i]+1);
+        for(i=0; i<V; i++){
+            printf("Vertex %d -> cost = %d parent = %d\n", i + 1, distance[i], parent[i] + 1);
+        }
     }
-
     return flag;
 }
 int main(){
@@ -64,7 +62,7 @@ int main(){
             printf("%d ",G[i][j]);
         }printf("\n");
     }
-    if (bellman(G, V, k, edge)){
+    if (bellmanford(G, V, k, edge)){
         printf("\nNo negative weight cycle\n");
     }
     else{
