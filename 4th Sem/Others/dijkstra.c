@@ -1,9 +1,6 @@
 #include <stdio.h>
 #define INFINITY 9999
 #define MAX 10
-
-void Dijkstra(int Graph[MAX][MAX], int n, int start);
-
 void Dijkstra(int Graph[MAX][MAX], int n, int start){
 
   int cost[MAX][MAX], distance[MAX], pred[MAX];
@@ -35,19 +32,22 @@ void Dijkstra(int Graph[MAX][MAX], int n, int start){
   while (count < n - 1) {
     mindistance = INFINITY;
 
-    for (i = 0; i < n; i++)
+    for (i = 0; i < n; i++){
       if (distance[i] < mindistance && !visited[i]) {
         mindistance = distance[i];
         nextnode = i;
       }
+    }
 
     visited[nextnode] = 1;
-    for (i = 0; i < n; i++)
-      if (!visited[i])
+    for (i = 0; i < n; i++){
+      if (!visited[i]){
         if (mindistance + cost[nextnode][i] < distance[i]) {
           distance[i] = mindistance + cost[nextnode][i];
           pred[i] = nextnode;
         }
+      }
+    }
     count++;
   }
 

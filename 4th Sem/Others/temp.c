@@ -1,86 +1,71 @@
-#include<stdio.h>
-#include<stdlib.h>
- 
-struct queue
-{
-    int size;
-    int f;
-    int r;
-    int* arr;
-};
- 
- 
-int isEmpty(struct queue *q){
-    if(q->r==q->f){
-        return 1;
-    }
-    return 0;
-}
- 
-int isFull(struct queue *q){
-    if(q->r==q->size-1){
-        return 1;
-    }
-    return 0;
-}
- 
-void enqueue(struct queue *q, int val){
-    if(isFull(q)){
-        printf("This Queue is full\n");
-    }
-    else{
-        q->r++;
-        q->arr[q->r] = val;
-        // printf("Enqued element: %d\n", val);
-    }
-}
- 
-int dequeue(struct queue *q){
-    int a = -1;
-    if(isEmpty(q)){
-        printf("This Queue is empty\n");
-    }
-    else{
-        q->f++;
-        a = q->arr[q->f]; 
-    }
-    return a;
-}
- 
-int main(){
-    // Initializing Queue (Array Implementation)
-    struct queue q;
-    q.size = 400;
-    q.f = q.r = 0;
-    q.arr = (int*) malloc(q.size*sizeof(int));
-    
-    // BFS Implementation 
-    int node;
-    int i = 1;
-    int visited[7] = {0,0,0,0,0,0,0};
-    int a [7][7] = {
-        {0,1,1,1,0,0,0},
-        {1,0,1,0,0,0,0},
-        {1,1,0,1,1,0,0},
-        {1,0,1,0,1,0,0},
-        {0,0,1,1,0,1,1},
-        {0,0,0,0,1,0,0}, 
-        {0,0,0,0,1,0,0} 
-    };
-    printf("%d", i);
-    visited[i] = 1;
-    enqueue(&q, i); // Enqueue i for exploration
-    while (!isEmpty(&q))
-    {
-        int node = dequeue(&q);
-        for (int j = 0; j < 7; j++)
-        {
-            if(a[node][j] ==1 && visited[j] == 0){
-                printf("%d", j);
-                visited[j] = 1;
-                enqueue(&q, j);
+#include <stdio.h>
+#define max 10
+#define infinite 9999
+
+void dijkstra(int graph[max][max], int n, int source){
+    int cost[max][max], distance[max], visited[max];
+    int i, j, count, nextnode, mindis;
+
+    for(i=0; i<n; i++){
+        for(j=0; j<n; j++){
+            if(graph[i][j] == 1){
+                cost[i][j] = graph[i][j];
+            }
+            else{
+                cost[i][j] = infinite;
             }
         }
     }
+
+    for(i=0; i<n; i++){
+        distance[i] = cost[source][i];
+        visited[i] = 0;
+    }
+
+    distance[source] = 0;
+    visited[source] = 1;
+    count = 1;
+
+    while(count < n-1){
+        mindis = infinite;
+
+        for(i=0; i<n; i++){
+            if(distance[i] < mindis && !visited[i]){
+                mindis = distance[i];
+                nextnode = i;
+            }
+        }
+
+        visited[nextnode] = 1;
+
+        for(i=0; i<n; i++){
+            if(mindis + cost[nextnode][i] < distance[i]){
+                distance[i] = mindis + cost[nextnode][i];
+            }
+        }
+        count++;
+    }
+
+    for(int i=0; i<n; i++){
+        printf("\nDistance of %d from %d = %d", i, source, distance[i]);
+    }
+}
+
+int main(){
+    int graph[max][max];
+    int source,n;
+    printf("Enter the number of nodes: ");
+    scanf("%d", &n);
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            printf("\nGraph[%d][%d] = ", i, j);
+            scanf("%d", &graph[i][j]);
+        }
+    }
+    printf("Enter source vertex: ");
+    scanf("%d", &source);
+
+    dijkstra(graph, n, source);
+
     return 0;
 }
