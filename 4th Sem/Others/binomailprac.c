@@ -2,12 +2,10 @@
 int min(int a, int b){
     return (a<b)?a:b;
 }
-
-int binomial(int n, int k){
+int binomail(int n, int k){
     int c[n+1][k+1];
-    int i, j;
-    for(i=0; i<=n; i++){
-        for(j=0; j<=min(i, k); j++){
+    for(int i=0; i<=n; i++){
+        for(int j=0; j<=min(i, k); j++){
             if(j==0 || i==j){
                 c[i][j] = 1;
             }
@@ -18,6 +16,6 @@ int binomial(int n, int k){
     }
     return c[n][k];
 }
-int main(){
-    printf("%d", binomial(5, 2));
+void main(){
+    printf("%d",binomail(5, 2));
 }
