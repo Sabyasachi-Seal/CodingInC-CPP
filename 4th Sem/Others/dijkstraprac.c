@@ -64,10 +64,10 @@ int main() {
   int Graph[MAX][MAX], i, j, n, u;
   printf("\nEnter the number of nodes: ");
   scanf("%d", &n);
-  for(i=0; i<n; i++){
-    for(j=0; j<n; j++){
-      printf("Enter the value of Graph[%d][%d] : ", i, j);
-      scanf("%d", &Graph[i][j]);
+  FILE *fp = fopen("matrixdijkstra.txt", "r");
+  for (i = 0; i < n; i++){
+    for (j = 0; j < n; j++){
+        fscanf(fp, "%d", &Graph[i][j]);
     }
   }
   printf("Enter source vertex: ");

@@ -3,12 +3,13 @@
 #define infinite 9999
 
 void dijkstra(int graph[max][max], int n, int source){
+
     int cost[max][max], distance[max], visited[max];
     int i, j, count, nextnode, mindis;
 
     for(i=0; i<n; i++){
         for(j=0; j<n; j++){
-            if(graph[i][j] == 1){
+            if(graph[i][j] != 0){
                 cost[i][j] = graph[i][j];
             }
             else{
@@ -39,13 +40,14 @@ void dijkstra(int graph[max][max], int n, int source){
         visited[nextnode] = 1;
 
         for(i=0; i<n; i++){
-            if(mindis + cost[nextnode][i] < distance[i]){
-                distance[i] = mindis + cost[nextnode][i];
+            if(!visited[i]){
+                if(mindis + cost[nextnode][i] < distance[i]){
+                    distance[i] = mindis + cost[nextnode][i];
+                }
             }
         }
         count++;
     }
-
     for(int i=0; i<n; i++){
         printf("\nDistance of %d from %d = %d", i, source, distance[i]);
     }
@@ -53,13 +55,13 @@ void dijkstra(int graph[max][max], int n, int source){
 
 int main(){
     int graph[max][max];
-    int source,n;
+    int source,n,i,j;
     printf("Enter the number of nodes: ");
     scanf("%d", &n);
-    for(int i=0; i<n; i++){
-        for(int j=0; j<n; j++){
-            printf("\nGraph[%d][%d] = ", i, j);
-            scanf("%d", &graph[i][j]);
+    FILE *fp = fopen("matrixdijkstra.txt", "r");
+    for (i = 0; i < n; i++){
+        for (j = 0; j < n; j++){
+            fscanf(fp, "%d", &graph[i][j]);
         }
     }
     printf("Enter source vertex: ");
