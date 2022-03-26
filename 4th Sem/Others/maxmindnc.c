@@ -21,10 +21,10 @@ struct minmax maxmincalc(int arr[], int low, int high){
     }
     else{//more than 2 element
         int mid = (high+low)/2;
-        struct minmax mml = maxmincalc(arr, low, mid);
-        struct minmax mmr = maxmincalc(arr, mid+1, high);
-        values.min = min(mml.min, mmr.min);
-        values.max = max(mml.max, mmr.max);
+        struct minmax leftsubarray = maxmincalc(arr, low, mid);
+        struct minmax rightsubarray = maxmincalc(arr, mid+1, high);
+        values.min = min(leftsubarray.min, rightsubarray.min);
+        values.max = max(leftsubarray.max, rightsubarray.max);
     }
     return values;
 }
