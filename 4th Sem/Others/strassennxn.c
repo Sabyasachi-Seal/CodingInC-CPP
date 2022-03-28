@@ -35,14 +35,6 @@ void mat_sub(int dim, int a[dim][dim], int b[dim][dim], int res[dim][dim]){
     }
 }
 
-void mat_equate(int dim, int a[dim][dim], int res[dim][dim]){
-    int i, j;
-    for (i=0; i<dim; i++){
-        for (j=0; j<dim; j++)
-            res[i][j] = a[i][j];
-    }
-}
-
 void strassen_construct (int size, int dim, int A[size][size], int a11[dim][dim], int a12[dim][dim], int a21[dim][dim], int a22[dim][dim]){
     for (int i=0; i<dim; i++){
         for (int j=0; j<dim; j++){

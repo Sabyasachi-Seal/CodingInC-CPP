@@ -2,12 +2,11 @@
 #define max 20
 #define infinite 999
 int bellmanford(int graph[max][max], int V, int E, int edges[max][2]){
-    int distance[max], parent[max];
+    int distance[max];
     int i, j, k, u, v, s, flag=1;
 
     for(i=0; i<V; i++){
         distance[i] = infinite;
-        parent[i] = -1;
     }
 
     printf("Enter the source vertex: ");
@@ -20,7 +19,6 @@ int bellmanford(int graph[max][max], int V, int E, int edges[max][2]){
             v = edges[j][1];
             if(distance[u] + graph[u][v] < distance[v]){
                 distance[v] = distance[u] + graph[u][v];
-                parent[v] = u;
             } 
         }
     }
@@ -35,7 +33,7 @@ int bellmanford(int graph[max][max], int V, int E, int edges[max][2]){
 
     if(flag){
         for(i=0; i<V; i++){
-            printf("Vertex %d -> cost = %d parent = %d\n", i + 1, distance[i], parent[i] + 1);
+            printf("Vertex %d -> cost = %d\n", i + 1, distance[i]);
         }
     }
     return flag;
