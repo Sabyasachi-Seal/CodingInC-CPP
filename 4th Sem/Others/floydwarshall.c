@@ -22,7 +22,8 @@ int floyd(int g[max][max], int n){
     }
     for(i=0; i<n; i++){
         for(j=0; j<n; j++){
-            printf("\nDistance of %d from %d = %d", i+1, j+1, g[i][j]);
+            if(i!=j)
+                printf("\nDistance of %d from %d = %d", i+1, j+1, g[i][j]);
         }
         printf("\n");
     }
