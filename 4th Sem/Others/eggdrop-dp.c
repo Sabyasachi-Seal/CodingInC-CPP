@@ -1,41 +1,30 @@
 #include <stdio.h>
 #include <limits.h>
+#define maxi 1000
 int max(int a, int b){
     return (a>b)?a:b;
 }
 int min(int a, int b){
     return (a<b)?a:b;
 }
-int eggdrop(int f, int e){
-    int eggs[e+1][f+1];
-    // if(f==0 || f==1){
-    //     return f;
-    // }
-    for(int i=1; i<=e; i++){
-        eggs[i][0] = 1;
-        eggs[i][1] = 0;
+int eggdrop(int eggs[maxi][maxi], int f, int e){
+    if(f==0 || f==1){
+        return f;
     }
-    // if(e==1){
-    //     return f;
-    // }
-    for(int i=1; i<=f; i++){
-        eggs[1][i] = i;
+    if(e==1){
+        return f;
     }
-    int temp = 0;
-    // for(currfloor=1; currfloor<=f; currfloor++){
-    //     temp = 1 + max(eggdrop(f-currfloor, e), eggdrop(currfloor-1, e-1));
-    //     minattempt = min(temp, minattempt);
-    // }
-    for(int i=2; i<=e; i++){
-        for(int j=2; j<=f; j++){
-            eggs[i][j] = INT_MAX;
-            for(int k=1; k<=j; k++){
-                temp = 1 + max(eggs[i-1][k-1], eggs[i][j-k]);
-                eggs[i][j] = min(temp, eggs[i][j]);
-            }
-        }
+    if(eggs[e][f]!=-1){
+        return eggs[e][f];
     }
-    return eggs[e][f];
+    int minattempt = INT_MAX;
+    int temp = minattempt;
+    for(int currfloor=1; currfloor<=f; currfloor++){
+        temp = 1 + max(eggdrop(eggs, f-currfloor, e), eggdrop(eggs, currfloor-1, e-1));
+        minattempt = min(temp, minattempt);
+    }
+    eggs[e][f] = minattempt;
+    return minattempt;
 }
 int main(){
     printf("\nEnter the number of floors: ");
@@ -44,7 +33,13 @@ int main(){
     printf("\nEnter the number of eggs: ");
     int e;
     scanf("%d", &e);
-    int ans = eggdrop(f, e);
+    int eggs[maxi][maxi];
+    for(int i=0; i<=e; i++){
+        for(int j=0; j<=f; j++){
+            eggs[i][j] = -1;
+        }
+    }
+    int ans = eggdrop(eggs, f, e);
     printf("\nMinimum Attempts: %d\n", ans);
     return 0;
 }
