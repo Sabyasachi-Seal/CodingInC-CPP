@@ -37,7 +37,7 @@ int main(){
                                                 h==digits[7] &&
                                                 i==digits[8] &&
                                                 j==digits[9]){
-                                                    printf("%d%d%d%d%d%d%d%d%d%d",a,b,c,d,e,f,g,h,i,j);
+                                                    printf("\n%d%d%d%d%d%d%d%d%d%d\n",a,b,c,d,e,f,g,h,i,j);
                                                 }
                                             digits[j]--;
                                         }
