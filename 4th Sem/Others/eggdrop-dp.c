@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <limits.h>
-#define maxi 1000
+#define maxi 999
 int max(int a, int b){
     return (a>b)?a:b;
 }
