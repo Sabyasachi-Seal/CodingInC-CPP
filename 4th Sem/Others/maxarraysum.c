@@ -1,5 +1,5 @@
 #include <stdio.h>
-// kadens algorithm
+// kaydens algorithm
 int main(){
     int arr[] = {4, 3, -1 , 105, 45, -100, 23, 64, -1};
     int size = sizeof(arr)/sizeof(arr[0]);
