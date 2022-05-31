@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define bitsize 4
-int numtobinary(int n){
+int numtobinary(int n){// decimal to binary
+    int i;
     int index = 0;
     int binary[bitsize];
-    for(int i=0; i<bitsize; i++){
+    for(i=0; i<bitsize; i++){
         binary[i] = 0;
     }
     while(n>0){
@@ -13,12 +14,12 @@ int numtobinary(int n){
         index++;
     }
     int number = 0;
-    for(int i=0; i<bitsize; i++){
+    for(i=0; i<bitsize; i++){
         number = number*10 + binary[i];
     }
     return number;
 }
-int ispalindrome(int n){
+int ispalindrome(int n){// checks palindrome
     int reverse = 0;
     int temp=n, rem;
     while(temp>0){
@@ -31,7 +32,7 @@ int ispalindrome(int n){
     }
     return 0;
 }
-int minsteps(int n){
+int minsteps(int n){// checks the min steps to change
     int binary;
     int increase;
     int decrease;
