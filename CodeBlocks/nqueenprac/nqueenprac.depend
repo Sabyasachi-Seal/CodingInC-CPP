@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1654932235 source:c:\users\user\onedrive\documents\codinginc-cpp\codeblocks\nqueenprac\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+
