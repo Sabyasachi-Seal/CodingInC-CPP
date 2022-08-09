@@ -10,7 +10,7 @@ void merge(int arr[], int start, int middle, int end, int size){
     int ti = start;
     int t[size];
     while(left<=middle && right<=end){
-        if(arr[left]<=arr[right]){
+        if(arr[left]>=arr[right]){
             t[ti] = arr[left];
             left++;
         }

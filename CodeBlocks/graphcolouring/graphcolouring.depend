@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1655139374 source:c:\users\user\onedrive\documents\codinginc-cpp\codeblocks\graphcolouring\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+

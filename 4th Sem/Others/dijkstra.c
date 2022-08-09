@@ -13,9 +13,6 @@ void Dijkstra(int cost[MAX][MAX], int n, int start){
       if (cost[i][j] == 0){
         cost[i][j] = INFINITY;
       }
-      // else{
-      //   cost[i][j] = cost[i][j];
-      // }
     }
   }
 
