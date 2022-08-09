@@ -1,10 +1,12 @@
 #include<stdio.h>
+#define max 9
+
 int input[] = {-1, -1};
 
 void getinput();
-void initboard(int, int, int[][]);
-void printboard(int, int, int[][]);
-void findpath(int, int, int[][], int, int, int, int);
+void initboard(int, int, int[max][max]);
+void printboard(int, int, int[max][max]);
+void findpath(int, int, int[max][max], int, int, int, int);
 
 void main() {
     int m, n, sr, sc, er, ec;
